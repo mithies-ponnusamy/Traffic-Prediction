@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Traffic Prediction Input</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to bottom right, #ff7eb3, #ff758c, #fe6a75);
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .container {
+            background: #ffffff;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            padding: 25px 40px;
+            max-width: 400px;
+            width: 100%;
+            text-align: center;
+        }
+
+        h1 {
+            color: #ff5a5f;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #555;
+        }
+
+        input[type="text"],
+        input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 14px;
+            transition: 0.3s ease;
+        }
+
+        input[type="text"]:focus,
+        input[type="number"]:focus {
+            border-color: #ff5a5f;
+            outline: none;
+            box-shadow: 0 0 5px rgba(255, 90, 95, 0.5);
+        }
+
+        button {
+            background: #ff5a5f;
+            color: white;
+            font-size: 16px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.3s ease;
+            width: 100%;
+        }
+
+        button:hover {
+            background: #e14e55;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Input Traffic Data</h1>
+        <form action="/input" method="POST">
+            <label for="city">City</label>
+            <input type="text" id="city" name="city" placeholder="Enter the city name" required>
+
+            <label for="vehicle_type_id">Vehicle Type ID</label>
+            <input type="number" id="vehicle_type_id" name="vehicle_type_id" placeholder="Enter Vehicle Type ID" required>
+
+            <label for="day_of_week">Day of the Week (0=Sunday, 6=Saturday):</label>
+            <input type="number" id="day_of_week" name="day_of_week" min="0" max="6" required>
+
+            <label for="time_of_day">Time of the Day (in 24-hour format):</label>
+            <input type="number" id="time_of_day" name="time_of_day" min="0" max="23" required>
+
+            <label for="road_type">Road Type:</label>
+            <select id="road_type" name="road_type" required>
+                <option value="1">Highway</option>
+                <option value="2">City Road</option>
+            </select>
+
+            <label for="vehicle_density">Vehicle Density (vehicles/km):</label>
+            <input type="number" id="vehicle_density" name="vehicle_density" required>
+
+            <label for="average_speed">Average Speed (km/h):</label>
+            <input type="number" id="average_speed" name="average_speed" step="0.1" required>
+
+            <label for="weather_condition">Weather Condition:</label>
+            <select id="weather_condition" name="weather_condition" required>
+                <option value="1">Sunny</option>
+                <option value="2">Rainy</option>
+                <option value="3">Foggy</option>
+            </select>
+
+            <label for="public_transport">Public Transport Available (1=Yes, 0=No):</label>
+            <input type="number" id="public_transport" name="public_transport" min="0" max="1" required>
+
+
+            <button type="submit">Predict</button>
+        </form>
+    </div>
+</body>
+</html>
